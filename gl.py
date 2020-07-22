@@ -98,7 +98,7 @@ class Bitmap(object):
                 if y <= 0:
                         self.vy = self.y + round(round(self.vpy/2)*y)
                 
-                self.point(self.vx,self.vy, self.vertex_color)
+                self.glPoint(self.vx,self.vy, self.vertex_color)
         else:
                 pass
     
@@ -114,7 +114,7 @@ class Bitmap(object):
         except ValueError:
                 print('\nERROR: Please enter a number between 1 and 0\n')
 
-    def point(self, x, y, color):
+    def glPoint(self, x, y, color):
         '''Draw a point'''
         try:
                 self.framebuffer[y][x] = color
@@ -145,10 +145,25 @@ class Bitmap(object):
             x0, x1 = x1, x0
             y0, y1 = y1, y0
         
-        
+        dy = abs(y1 - y0)
+        dx = abs(x1 - x0)
 
+        #Determine the points that will form the line
+        offset = 0 * 2 * dx
+        threshold = 0.5 * 2 * dx
+        y = y0
 
+        #Fill the line with points without leaving space between
+        for x in range(x0, x1 + 1):
+            if steep:
+                self.glPoint((float(y)/(float(self.width)/2) - 1, (float(x)/(float(self.height)/2)) - 1, self.vertex_color)
+            else:
+                self.glPoint((float(x)/(float(self.width)/2) - 1, (float(y)/(float(self.height)/2)) - 1, self.vertex_color)
+            offset += dy
 
+            if offset >= threshold:
+                y += 1 if y0 < y1 else -1
+                threshold += 1 * dx
 
     def glWrite(self, file_name):
         '''Write Bitmap File'''
