@@ -75,11 +75,10 @@ if __name__ == '__main__':
     #Input glVertex Colors
     bmp.glColor(bmp_r, bmp_g, bmp_b)
 
-    bmp.glVertex(0, 0)
-    bmp.glVertex(-1, -1)
-    bmp.glVertex(-1, 1)
-    bmp.glVertex(1, 1)
-    bmp.glVertex(1, -1)
+    bmp.glLine(-1, -1, 1, 1)
+    bmp.glLine(-1, 1, 1, -1)
+    bmp.glLine(0, -1, 0, 1)
+    bmp.glLine(-1, 0, 1, 0)
 
     #Output BMP
     bmp.glWrite("test.bmp")

@@ -116,6 +116,8 @@ class Bitmap(object):
 
     def glPoint(self, x, y, color):
         '''Draw a point'''
+        x = int(round((x+1) * self.width / 2))
+        y = int(round((y+1) * self.height / 2))
         try:
                 self.framebuffer[y][x] = color
         except IndexError:
@@ -149,16 +151,16 @@ class Bitmap(object):
         dx = abs(x1 - x0)
 
         #Determine the points that will form the line
-        offset = 0 * 2 * dx
+        offset = 0.5 * 2 * dx
         threshold = 0.5 * 2 * dx
         y = y0
 
         #Fill the line with points without leaving space between
         for x in range(x0, x1 + 1):
             if steep:
-                self.glPoint((float(y)/(float(self.width)/2) - 1, (float(x)/(float(self.height)/2)) - 1, self.vertex_color)
+                self.glPoint((float(y)/(float(self.width)/2))-1,(float(x)/(float(self.height)/2))-1,self.vertex_color)
             else:
-                self.glPoint((float(x)/(float(self.width)/2) - 1, (float(y)/(float(self.height)/2)) - 1, self.vertex_color)
+                self.glPoint((float(x)/(float(self.width)/2))-1,(float(y)/(float(self.height)/2))-1,self.vertex_color)
             offset += dy
 
             if offset >= threshold:
