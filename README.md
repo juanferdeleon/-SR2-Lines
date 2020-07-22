@@ -6,7 +6,7 @@ SR2 es un algoritmo que permite dibujar una línea en un archivo bmp, similar a 
 
 Descargue el repositorio [SR2: Lines](https://github.com/juanferdeleon/SR2-Lines)
 
-Luego ejecute el archivo [Engine3D.py](/Engine3D.py)
+Luego ejecute el archivo [Engine3D.py](/Engine3D.py) dentro de cualquier IDE.
 
 Si lo ejecuta desde la linea de comandos:
 
