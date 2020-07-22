@@ -121,6 +121,35 @@ class Bitmap(object):
         except IndexError:
                 print("\nPixel is outside the limits of the image\n")
     
+    def glLine(self, x0, y0, x1, y1):
+        '''Draw a straight line through the succession of pixels'''
+
+        #Convert the values between -1 and 1 to DMC coordenates
+        x0 = int(round((x0 + 1) * self.width / 2))
+        y0 = int(round((y0 + 1) * self.height / 2))
+        x1 = int(round((x1 + 1) * self.width / 2))
+        y1 = int(round((y1 + 1) * self.height / 2))
+
+        dy = abs(y1 - y0)
+        dx = abs(x1 - x0)
+
+        steep = dy > dx
+        
+        #If dy is greater than dx then we exchange each of the coordinates
+        if steep:
+            x0, y0 = y0, x0
+            x1, y1 = y1, x1
+        
+        #If the starting point in x is greater than the final point then we exchange the points
+        if x0 > x1:
+            x0, x1 = x1, x0
+            y0, y1 = y1, y0
+        
+        
+
+
+
+
     def glWrite(self, file_name):
         '''Write Bitmap File'''
         
